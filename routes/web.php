@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,7 @@ Route::get('/', function () {
 Route::get('/login',
 [AkunController::class, 'LoginAkun']
 )->name('akun.login');
+
+Route::prefix('/menu')->group(function(){
+    Route::get('/', [MenuController::class, 'index'])->name('menu.index');
+});
