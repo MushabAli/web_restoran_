@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MenuModel;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class MenuController extends Controller
 {
@@ -21,5 +22,34 @@ class MenuController extends Controller
     public function index()
     {
         return view('menu.index');
+    }
+
+    public function tambah()
+    {
+        //function untuk menambah data menu
+    }
+
+    public function simpan()
+    {
+
+    }
+
+    public function update(Request $request)
+    {
+
+    }
+
+    public function delete(Request $request)
+    {
+
+    }
+
+    public function DataMenu(Request $request)
+    {
+        //endpoint API untuk datatable serverside
+        if($request->ajax()):
+            $data = $this->menuModel->get();
+            return DataTables::of($data)->toJson();
+        endif;
     }
 }
